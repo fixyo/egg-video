@@ -19,7 +19,10 @@
 		</view>
 		
 		<view class="px-4">
-			<main-big-button @click="submit">{{ type === 'login' ? '登 录' : '注 册' }}</main-big-button>
+			<app-button type="primary" size="large" @click="submit" :loading="loading">
+				<text>{{ type === 'login' ? '登 录' : '注 册' }}</text>
+			</app-button>
+			<!-- <main-big-button @click="submit"></main-big-button> -->
 		</view>
 		
 		<view class="flex align-center justify-center py-5">
@@ -58,9 +61,11 @@
 
 <script>
 	import mainBigButton from '@/components/common/main-big-button.vue';
+	import appButton from '@/components/common/app-button/app-button.vue'
 	export default {
 		components: {
-			mainBigButton
+			mainBigButton,
+			appButton 
 		},
 		data() {
 			return {
@@ -70,7 +75,8 @@
 					username:"",
 					password:"",
 					repassword:""
-				}
+				},
+				loading: false 
 			}
 		},
 		onLoad() {
@@ -92,6 +98,21 @@
 			},
 			submit(){
 				let msg = this.type === 'reg' ? '注册' : '登录'
+				let values = Object.values(this.form)
+				console.log(values)
+				if (this.type === 'reg') {
+					if (!this.form.username || !this.form.password || !this.form.repassword) {
+						return this.$helper.toast('用户名或密码不能为空')
+					}
+					if (this.form.password !== this.form.repassword) {
+						return this.$helper.toast('密码与确认密码不相同')
+					}
+				} else {
+					if (!this.form.username || !this.form.password) {
+						return this.$helper.toast('用户名或密码不能为空')
+					}
+				}
+				this.loading = true 
 				this.$request.post('/signup', this.form)
 				.then(res=>{
 					console.log(res, 'resssss')
@@ -103,13 +124,15 @@
 							delta: 1
 						});
 					}
+					this.loading = false 
 					uni.showToast({
 						title: msg+'成功',
 						icon: 'none'
 					});
 				})
 				.catch(err => {
-					console.log(err, 'errr')
+					this.loading = false 
+					console.error(err)
 				})
 
 			}

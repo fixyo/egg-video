@@ -1,23 +1,24 @@
 <template>
 	<view>
-		<navigator v-if="!user" url="../login/login">
-		<view class="p-3 flex align-center">
-			<image src="/static/demo/6.jpg" style="height: 120rpx;width: 120rpx;" class="bg-light rounded-circle flex-shrink"></image>
-			<view class="flex flex-column pl-3 flex-1">
-				<view class="font-md text-main">点击登录</view>
-				<text class="font-sm text-muted">请先登录</text>
+		<navigator v-if="!userInfo" url="../login/login">
+			<view class="p-3 flex align-center">
+				<image src="/static/demo/6.jpg" style="height: 120rpx;width: 120rpx;" class="bg-light rounded-circle flex-shrink"></image>
+				<view class="flex flex-column pl-3 flex-1">
+					<view class="font-md text-main">点击登录</view>
+					<text class="font-sm text-muted">请先登录</text>
+				</view>
 			</view>
-		</view>
 		</navigator>
 		
-		<navigator v-else :url="'../user-space/user-space?user_id='+user.id">
-		<view class="p-3 flex align-center">
-			<image :src="user.avatar || '/static/demo/6.jpg'" style="height: 120rpx;width: 120rpx;" class="bg-light rounded-circle flex-shrink"></image>
-			<view class="flex flex-column pl-3 flex-1">
-				<view class="font-md text-dark">{{user.nickname || user.username}} <text class="font-sm text-muted ml-3">{{user.sex}}</text></view>
-				<text class="font-sm text-muted">{{user.desc || '暂无描述'}}</text>
+		<navigator v-else :url="'../user-space/user-space?user_id='">
+			{{userInfo}}
+			<view class="p-3 flex align-center">
+				<image :src="'/static/demo/6.jpg'" style="height: 120rpx;width: 120rpx;" class="bg-light rounded-circle flex-shrink"></image>
+				<view class="flex flex-column pl-3 flex-1">
+					<view class="font-md text-dark"> <text class="font-sm text-muted ml-3"></text></view>
+					<text class="font-sm text-muted"></text>
+				</view>
 			</view>
-		</view>
 		</navigator>
 		
 		<view class="f-divider"></view>
@@ -61,7 +62,7 @@
 	import mainBigButton from '@/components/common/main-big-button.vue';
 	import fPopup from '@/components/common/f-popup.vue';
 	
-	import { mapState } from 'vuex'
+	import { mapGetters } from 'vuex'
 	
 	export default {
 		components: {
@@ -77,9 +78,10 @@
 			}
 		},
 		computed: {
-			...mapState({
-				user:state=>state.user
-			})
+			// ...mapState({
+			// 	user:state=>state.user
+			// })
+			...mapGetters(['userInfo'])
 		},
 		onNavigationBarButtonTap(e) {
 			if(e.index == 0){
@@ -96,6 +98,7 @@
 				this.videoCount = res.videoCount
 			})
 		},
+
 		methods: {
 			// 选择投稿类型
 			addMsg(){
@@ -105,9 +108,9 @@
 				this.$refs.popup.hide()
 			},
 			navigateTo(path){
-				this.authJump({
-					url: '/pages/'+path+'/'+path,
-				})
+				// this.authJump({
+				// 	url: '/pages/'+path+'/'+path,
+				// })
 			}
 		}
 	}

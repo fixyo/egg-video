@@ -74,3 +74,97 @@ $uni-color-subtitle: #555555; // 二级标题颜色
 $uni-font-size-subtitle:36upx;
 $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:30upx;
+
+
+/* ***************** 系统颜色定义 ***************** */
+
+/* 系统主色值 */
+$app-default-color: #e5e5e5;
+
+/* 系统主色值 */
+$app-primary-color: #13C9B7;
+
+/* 淡蓝主色值 */
+$app-info-color: #55aaff;
+
+/* 橙色主色值 */
+$app-warning-color: #FD6B32;
+
+/* 红色主色值 */
+$app-error-color: #ff0000;
+
+/* 绿色主色值 */
+$app-success-color: #38CC90;
+
+// 表格边框颜色
+$app-table-border-color: #67D9FF;
+
+/* 文字基本颜色 */
+// 文字基本色
+$app-text-color: #333333;
+// 选中的文字或字体图标反色，如有背景色的按钮中的文字颜色
+$app-text-color-inverse: #ffffff;
+// 提示黑色，部分不重要的文本使用该色值进行展示
+$app-text-color-prompt: #666666;
+// 辅助灰色，如加载更多的提示信息
+$app-text-color-grey: #999999;
+// 文本框中的提示颜色值
+$app-text-color-placeholder: #808080;
+// 按钮或文字禁用时的颜色值
+$app-text-color-disable: #c0c0c0;
+
+/* 系统背景颜色 */
+// 默认背景色
+$app-bg-color: #ffffff;
+// 当导航栏为白色时主页面需要使用默认颜色以做区分
+$app-bg-color-grey: #f4f4f4;
+// 点击状态颜色
+$app-bg-color-hover: #f1f1f1;
+// 遮罩颜色
+$app-bg-color-mask: rgba(0, 0, 0, 0.4);
+// 遮罩颜色
+$app-bg-color-black: #000000;
+/* ***************** 系统颜色定义 ***************** */
+
+/* ***************** 系统字体定义 ***************** */
+/* 系统最小字体样式，主要使用场景包含： */
+/* 1、隐私协议及用户协议提示文本 */
+/* 2、补打卡时展示的文本字体 */
+/* 3、部分进度条中的文本字体 */
+/* 4、其它根据高保真确定具体使用场景 */
+$app-font-size20: 20rpx;
+/* 根据高保真确定具体使用场景 */
+$app-font-size22: 22rpx;
+/* 根据高保真确定具体使用场景 */
+$app-font-size24: 24rpx;
+/* 根据高保真确定具体使用场景 */
+$app-font-size26: 26rpx;
+/* 根据高保真确定具体使用场景 */
+$app-font-size28: 28rpx;
+/* 系统30rpx字体，主要使用场景包含： */
+/* 1、页面没有数据时的提示文本字体 */
+/* 2、消息列表的标题 */
+/* 3、大部分列表字体 */
+/* 4、其它根据高保真确定具体使用场景 */
+$app-font-size30: 30rpx;
+$app-font-size32: 32rpx;
+/* 系统36rpx字体，主要使用场景包含： */
+/* 1、最大号按钮内的字体，app-btn-large */
+/* 2、页面标题字体 */
+/* 3、页面标签字体 */
+/* 4、弹框中展示的标题及内容文本字体 */
+/* 5、其它根据高保真确定具体使用场景 */
+$app-font-size36: 36rpx;
+$app-font-size40: 40rpx;
+/* ***************** 系统字体定义 ***************** */
+
+
+/* ------------------ 待替换 ------------------ */
+/* 高保真中无该字体样式，需逐步替换，不再使用该字体样式 */
+/* 高保真中目前设计的最小字体为20rpx，最大字体为36rpx，20rpx以下及36rpx以上的字体均需替换 */
+$app-font-size12: 12rpx;
+$app-font-size14: 14rpx;
+$app-font-size16: 16rpx;
+$app-font-size18: 18rpx;
+
+/* ------------------ 待替换 ------------------ */

@@ -1,24 +1,33 @@
 <template>
 	<view class="bg-dark">
-		<video id="video" ref="video"
-		:src="src"
-		:poster="poster" 
-		:controls="false"
-		:show-center-play-btn="false"
-		:show-fullscreen-btn="false" 
-		:show-progress="false" 
-		:enable-progress-gesture="false" 
-		style="width: 750rpx;height: 225px;"
-		@fullscreenchange="fullscreenchange"
-		@timeupdate="timeupdate"
-		@play="isplay = true" 
-		@pause="isplay = false"
+		<video 
+			id="video" 
+			ref="video"
+			:src="src"
+			:poster="poster" 
+			:controls="false"
+			:show-center-play-btn="false"
+			:show-fullscreen-btn="false" 
+			:show-progress="false" 
+			:enable-progress-gesture="false" 
+			style="width: 750rpx;height: 225px;"
+			@fullscreenchange="fullscreenchange"
+			@timeupdate="timeupdate"
+			@play="isplay = true" 
+			@pause="isplay = false"
 		>
 			<view class="position-absolute flex align-center justify-center" :style="videoBox">
 				<!-- 蒙版 -->
-				<view class="position-absolute left-0 right-0 top-0 bottom-0" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd"></view>
+				<view 
+					class="position-absolute left-0 right-0 top-0 bottom-0" 
+					@touchstart="touchStart" 
+					@touchmove="touchMove" 
+					@touchend="touchEnd"
+				></view>
 				<!-- 侧边 -->
-				<view v-if="fullScreenStatus && (showStatusBarStatus || lockScreenStatus)" class="position-absolute top-0 right-0 bottom-0 flex align-center justify-center" style="width: 80px;">
+				<view 
+					v-if="fullScreenStatus && (showStatusBarStatus || lockScreenStatus)" 
+					class="position-absolute top-0 right-0 bottom-0 flex align-center justify-center" style="width: 80px;">
 					<view class="rounded flex align-center justify-center" style="width: 60px;height: 60px;background-color: rgba(0,0,0,0.4);" @click="lockScreen">
 						<text class="iconfont" :class="lockScreenStatus ? 'text-main' : 'text-white'">&#xe620;</text>
 					</view>
@@ -105,7 +114,7 @@
 		<!-- 非全屏 -->
 		<!-- 顶部 -->
 		<view v-if="showStatusBarStatus && !fullScreenStatus" class="video-bg-top position-fixed top-0 left-0 right-0">
-			<view :style="'height: '+statusBarHeight+'px;'"></view>
+			<view :style="'height: '+statusBarHeight+'px;'" class="border"></view>
 			<view style="height: 44px;" class="flex align-center">
 				<f-icon-btn :icon="'\ue612'" @click="back"></f-icon-btn>
 			</view>
@@ -417,6 +426,8 @@
 				}
 			},
 			touchStart(e){
+				console.log('touch start')
+
 				this.oldTouchs = e.changedTouches[0]
 				
 				this.oldValue = {
@@ -424,6 +435,8 @@
 				}
 			},
 			touchMove(e){
+				console.log('touch move')
+
 				if(this.lockScreenStatus) return
 				let newTouchs = e.changedTouches[0]
 				if(!this.touchType){

@@ -1,0 +1,128 @@
+<template>
+	<view class="video-wrapper">
+		<video 
+			src="http://img.cdn.qiniu.dcloud.net.cn/wap2appvsnative.mp4"
+			:controls="false"
+			ref="video"
+			@timeupdate="timeupdate"
+			style="width: 750rpx; height: 225px;"
+		></video>
+		<!-- 顶部操作栏 -->
+		<view class="video-top-bar">
+			<view :style="`height:${statusBarHeight}px;`" class=""></view>
+			<view class="top-operate-area">
+				<app-icon :size="16" :icon="'\ue612'"></app-icon>
+			</view>
+		</view>
+		
+		<view class="video-bottom-bar border-green">
+			<view class="bottom-operate-area flex align-stretch">
+				<view class="left"><app-icon :size="22" :icon="'\ue63a'" ></app-icon></view>
+				<view class="center flex-1">
+					<app-slider 
+						:duration="duration" 
+						:currentTime="currentTime"
+						@change="progressChange"
+					></app-slider>
+				</view>
+				<view class="flex align-center justify-center" style="width: 90px;">
+					<text class="font-sm text-white">{{currentTime|formatTime}}/{{duration|formatTime}}</text>
+				</view>
+				<view class="right"><app-icon :size="22" :icon="'\ue800'"></app-icon></view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	import appIcon from './components/app-icon.vue'
+	import appSlider from './components/app-slider.vue'
+	const dom = weex.requireModule('dom')
+	let videoCTX = null 
+	export default {
+		provide() {
+			return {
+				videoComInstance: this
+			}
+		},
+		components: {
+			appIcon,
+			appSlider
+		},
+		data() {
+			return {
+				statusBarHeight: 0,
+				currentTime: 0,
+				duration: 3700,
+				windowWidth: 0,
+				windowHeight: 0
+			}
+		},
+		created() {
+			let systemInfo = uni.getSystemInfoSync()
+			this.statusBarHeight = systemInfo.statusBarHeight 
+			this.windowHeight = systemInfo.windowHeight
+			this.windowWidth = systemInfo.windowWidth 
+
+			dom.addRule('fontFace', {
+				'fontFamily': "iconfont",
+				'src': "url('https://at.alicdn.com/t/font_1419176_mzo8rsjxi4c.ttf')"
+			});
+		},
+		mounted() {
+			videoCTX = this.$refs.video
+		},
+		filters: {
+			formatTime(result) {
+			   var h = Math.floor(result / 3600) < 10 ? '0' + Math.floor(result / 3600) : Math.floor(result / 3600);
+			   var m = Math.floor((result / 60 % 60)) < 10 ? '0' + Math.floor((result / 60 % 60)) : Math.floor((result / 60 % 60));
+			   var s = Math.floor((result % 60)) < 10 ? '0' + Math.floor((result % 60)) : Math.floor((result % 60));
+			   return result = result > 3600 ? (h + ":" + m + ":" + s) : m + ":" + s;
+			},
+			formatQuality(val){
+				let arr = {
+					SD:"标清",
+					HD:"高清",
+					FHD:"超清"
+				}
+				return arr[val]
+			}
+		},
+		methods: {
+			timeupdate(e) {
+				this.currentTime = parseInt(e.detail.currentTime)
+				this.duration = parseInt(e.detail.duration)
+			},
+			progressChange(e) {
+				videoCTX.seek(e)
+				videoCTX.play()
+			}
+		}
+	}
+</script>
+
+<style>
+	.video-wrapper {
+		position: relative;
+		
+	}
+	.video-top-bar {
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+	.top-operate-area {
+		height: 44px;
+	}
+	.video-bottom-bar {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 44px;
+	}
+	.bottom-operate-area {
+		
+	}
+
+</style>

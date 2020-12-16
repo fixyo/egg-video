@@ -1,33 +1,34 @@
 import $store from '../store/index.js';
+
 export default {
     // 全局配置
     common:{
-		// #ifndef H5
-		baseUrl:"http://ceshi8.dishait.cn",
-		// #endif
-        // #ifdef H5
-        baseUrl:"/api",
-        // #endif
-        header:{
-            'Content-Type':'application/json;charset=UTF-8',
-        },
-        data:{},
-        method:'GET',
-        dataType:'json',
-        token:false
+			// #ifndef H5
+			baseUrl:"http://ceshi8.dishait.cn",
+			// #endif
+			// #ifdef H5
+			baseUrl:"/api",
+			// #endif
+			header:{
+				'Content-Type':'application/json;charset=UTF-8',
+			},
+			data:{},
+			method:'GET',
+			dataType:'json',
+			token:false
     },
     // 请求 返回promise
     request(options = {}){
-        // 组织参数
-        options.url = this.common.baseUrl + options.url
-        options.header = options.header || this.common.header
-        options.data = options.data || this.common.data
-        options.method = options.method || this.common.method
-        options.dataType = options.dataType || this.common.dataType
-        options.token = options.token === true ?  true : this.common.token
+			// 组织参数
+			options.url = this.common.baseUrl + options.url
+			options.header = options.header || this.common.header
+			options.data = options.data || this.common.data
+			options.method = options.method || this.common.method
+			options.dataType = options.dataType || this.common.dataType
+			options.token = options.token === true ?  true : this.common.token
 
-        // 请求
-        return new Promise((res,rej)=>{
+			// 请求
+			return new Promise((res,rej)=>{
 			// 请求之前验证...
 			// token验证
 			if(options.token){
@@ -156,7 +157,6 @@ export default {
 					onProgress(res.progress)
 				}
 			});
-			
 		})
 	}
 }

@@ -25,7 +25,6 @@ class Request {
 			fullUrl = fullUrl.includes('?') ? `${fullUrl}${queryStr}` : `${fullUrl}?${queryStr}`
 		}
 		
-		console.log(fullUrl, 'fullurl')
 		return fullUrl 
 	}
 	
@@ -83,7 +82,6 @@ class Request {
 	}
 	
 	async request(options = {}) {
-		
 		options.baseUrl = options.baseUrl || this.config.baseUrl 
 		options.dataType = options.dataType || this.config.dataType 
 		options.url = options.url || ''
@@ -92,7 +90,6 @@ class Request {
 		options.header = {...this.config.header, ...options.header}
 		options.method = options.method || this.config.method
 		options.getTask = options.getTask || this.config.getTask 
-		console.log(111)
 		return new Promise((resolve, reject) => {
 			let next = true 
 			const cancel = (t = 'handle cancel', config = options) => {
@@ -104,7 +101,6 @@ class Request {
 				next = false 
 			}
 			
-			
 			const requestConfig = { ...this.requestBeforeFun(options, cancel)}
 			const _config = {...requestConfig}
 			if (!next) return 
@@ -115,13 +111,10 @@ class Request {
 				method: _config.method,
 				complete: (res) => {
 					res.config = requestConfig 
-					console.log('complete', res)
 					if (this.validataStatus(res.statusCode)) {
 						res = this.requestComFun(res)
-						console.log('xxxhhhhhhhhh', res)
 						resolve(res)
 					} else {
-						console.log(2)
 						res = this.requestComFail(res)
 						reject(res)
 					}

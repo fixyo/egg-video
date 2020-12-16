@@ -1,0 +1,432 @@
+.app-uni-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 系统最大尺寸按钮，按钮高度及字体高度为90rpx，字体大小为40rpx */
+.app-btn-larger {
+  height: 90rpx;
+  line-height: 1;
+  font-size: $app-font-size40;
+  padding: 0 20rpx;
+  &.round {
+    border-radius: 45rpx;
+  }
+}
+/* 系统大尺寸按钮，按钮高度及字体高度为80rpx，字体大小为36rpx */
+.app-btn-large {
+  height: 80rpx;
+  line-height: 1;
+  font-size: $app-font-size36;
+  padding: 0 20rpx;
+  &.round {
+    border-radius: 40rpx;
+  }
+}
+
+/* 系统中等尺寸按钮，按钮高度及字体高度为65rpx，字体大小为30rpx */
+/* 主要使用场景为页面内部的非主要操作按钮，通常按钮位置在页面中间位置 */
+.app-btn-middle {
+  height: 64rpx;
+  line-height: 1;
+  font-size: $app-font-size32;
+  padding: 0 20rpx;
+  &.round {
+    border-radius: 32rpx;
+  }
+}
+
+/* 系统小尺寸按钮，按钮高度及字体高度为50rpx，字体大小为30rpx */
+/* 主要使用场景为页面内部的小操作按钮，具体使用场景如： */
+/* 1、登录页面“获取验证码”按钮 */
+/* 2、考勤异常中的“异常申请”按钮 */
+.app-btn-small {
+  height: 54rpx;
+  line-height: 1;
+  font-size: $app-font-size30;
+  padding: 0 14rpx;
+  &.round {
+    border-radius: 27rpx;
+  }
+}
+/* 系统较小尺寸按钮，按钮高度及字体高度为45rpx，字体大小为26rpx */
+/* 主要使用场景为页面内部的小操作按钮，具体使用场景如： */
+/* 1、登录页面“获取验证码”按钮 */
+/* 2、考勤异常中的“异常申请”按钮 */
+.app-btn-smaller {
+  height: 44rpx;
+  line-height: 1;
+  font-size: $app-font-size26;
+  padding: 0 14rpx;
+  &.round {
+    border-radius: 22rpx;
+  }
+}
+/* 系统最小尺寸按钮，按钮高度及字体高度为40rpx，字体大小为20rpx */
+/* 主要使用场景为页面内部的最小操作按钮，具体使用场景如： */
+/* 1、考勤异常页面的“设为正常”按钮 */
+.app-btn-mini {
+  height: 40rpx;
+  line-height: 1;
+  font-size: $app-font-size24;
+  padding: 0 10rpx;
+  &.round {
+    border-radius: 20rpx;
+  }
+}
+
+/* 蓝色主色调按钮（主要按钮），按钮背景色为蓝色，按钮字体颜色为白色 */
+.app-primary-btn {
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: $app-primary-color;
+  color: $app-text-color-inverse;
+  // transition: all 0.1s;
+  &.disabled {
+    background-color: $app-text-color-disable;
+  }
+  &::after {
+    content: unset;
+  }
+  &:not(.disabled):not(.plain):active {
+    color: $app-text-color-inverse;
+    background-color: $app-primary-color * 1.1;
+  }
+  
+  /* 蓝色主色调按钮（次要按钮），按钮背景色为白色，按钮字体颜色及按钮边框颜色为蓝色 */
+  &.plain {
+    background-color: $app-bg-color;
+    color: $app-primary-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $app-primary-color;
+    
+    &.disabled {
+      color: $app-text-color-disable;
+      border-color: $app-text-color-disable;
+    }
+    
+    &::after {
+      content: unset;
+    }
+    
+    &:not(.disabled):active {
+      color: $app-primary-color * 1.1;
+      border-color: $app-primary-color * 1.1;
+    }
+  }
+}
+
+/* 默认主色调按钮（主要按钮），按钮背景色为灰色，按钮字体颜色为黑色 */
+.app-default-btn {
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: $app-default-color;
+  color: $app-text-color-grey;
+  // transition: all 0.1s;
+  &.disabled {
+    background-color: $app-text-color-disable;
+  }
+  &::after {
+    content: unset;
+  }
+  &:not(.disabled):not(.plain):active {
+    color: $app-text-color-inverse;
+    background-color: $app-text-color-grey * 1.1;
+  }
+  
+  /* 默认主色调按钮（次要按钮），按钮背景色为白色，按钮字体颜色及按钮边框颜色为灰色 */
+  &.plain {
+    background-color: $app-bg-color;
+    color: $app-text-color-grey;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $app-text-color-grey;
+    
+    &.disabled {
+      color: $app-text-color-disable;
+      border-color: $app-text-color-disable;
+    }
+    
+    &::after {
+      content: unset;
+    }
+    
+    &:not(.disabled):active {
+      color: $app-text-color-grey * 1.1;
+      border-color: $app-text-color-grey * 1.1;
+    }
+  }
+}
+
+
+/* 橙色主色调按钮（主要按钮），按钮背景色为橙色，按钮字体颜色为白色 */
+.app-warning-btn {
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: $app-warning-color;
+  color: $app-text-color-inverse;
+  // transition: all 0.1s;
+
+  &.disabled {
+    background-color: $app-text-color-disable;
+  }
+
+  &::after {
+    content: unset;
+  }
+
+  &:not(.disabled):not(.plain):active {
+    background-color: $app-warning-color * 1.1;
+  }
+  /* 橙色主色调按钮（次要按钮），按钮背景色为白色，按钮字体颜色及按钮边框颜色为橙色 */
+  &.plain {
+    background-color: $app-bg-color;
+    color: $app-warning-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $app-warning-color;
+    &.disabled {
+      color: $app-text-color-disable;
+      border-color: $app-text-color-disable;
+    }
+    &::after {
+      content: unset;
+    }
+    &:not(.disabled):active {
+      color: $app-warning-color * 1.1;
+      border-color: $app-warning-color * 1.1;
+    }
+  }
+}
+
+/* 淡蓝色主色调按钮（主要按钮），按钮背景色为淡蓝色，按钮字体颜色为白色 */
+.app-info-btn {
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: $app-info-color;
+  color: $app-text-color-inverse;
+  // transition: all 0.1s;
+
+  &.disabled {
+    background-color: $app-text-color-disable;
+  }
+  &::after {
+    content: unset;
+  }
+  &:not(.disabled):not(.plain):active {
+    background-color: $app-info-color * 1.1;
+  }
+
+  &.plain {
+    background-color: $app-bg-color;
+    color: $app-info-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $app-info-color;
+    // transition: all 0.1s;
+    &.disabled {
+      color: $app-text-color-disable;
+      border-color: $app-text-color-disable;
+    }
+    &::after {
+      content: unset;
+    }
+    &:not(.disabled):active {
+      color: $app-info-color * 1.1;
+      border-color: $app-info-color * 1.1;
+    }
+  }
+}
+
+/* 红色主色调按钮（主要按钮），按钮背景色为红色，按钮字体颜色为白色 */
+.app-error-btn {
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: $app-error-color;
+  color: $app-text-color-inverse;
+  // transition: all 0.1s;
+  &.disabled {
+    background-color: $app-text-color-disable;
+  }
+  &::after {
+    content: unset;
+  }
+  &:not(.disabled):not(.plain):active {
+    background-color: $app-error-color * 1.1;
+  }
+  
+  &.plain {
+    background-color: $app-bg-color;
+    color: $app-error-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $app-error-color;
+    // transition: all 0.1s;
+    
+    /* 红色主色调按钮（次要按钮），按钮背景色为白色，按钮字体颜色及按钮边框颜色为红色 */
+    &.disabled {
+      color: $app-text-color-disable;
+      border-color: $app-text-color-disable;
+    }
+    &::after {
+      content: unset;
+    }
+    &:not(.disabled):active {
+      color: $app-error-color * 1.1;
+      border-color: $app-error-color * 1.1;
+    }
+  }
+}
+
+/* 绿色主色调按钮（主要按钮），按钮背景色为绿色，按钮字体颜色为白色 */
+.app-success-btn {
+  border-radius: 10rpx;
+  text-align: center;
+  background-color: $app-success-color;
+  color: $app-text-color-inverse;
+  // transition: all 0.1s;
+
+  &.disabled {
+    background-color: $app-text-color-disable;
+  }
+
+  &::after {
+    content: unset;
+  }
+
+  &:not(.disabled):not(.plain):active {
+    color: $app-text-color-inverse;
+    background-color: $app-success-color * 1.1;
+  }
+  
+  /* 绿色主色调按钮（次要按钮），按钮背景色为白色，按钮字体颜色及按钮边框颜色为绿色 */
+  &.plain {
+    background-color: $app-bg-color;
+    color: $app-success-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $app-success-color;
+    // transition: all 0.1s;
+    &.disabled {
+      color: $app-text-color-disable;
+      border-color: $app-text-color-disable;
+    }
+    &::after {
+      content: unset;
+    }
+    &:not(.disabled):active {
+      color: $app-success-color * 1.1;
+      border-color: $app-success-color * 1.1;
+    }
+  }
+}
+
+/* 蓝色主色调超链接 */
+.app-primary-link {
+  color: $app-primary-color;
+  // transition: all 0.1s;
+  background-color: transparent;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    color: $app-text-color-disable;
+  }
+
+  &:not(.disabled):active {
+    color: $app-primary-color * 1.1;
+  }
+}
+
+/* 橙色主色调超链接 */
+.app-warning-link {
+  color: $app-warning-color;
+  // transition: all 0.1s;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    color: $app-text-color-disable;
+  }
+
+  &:not(.disabled):active {
+    color: $app-warning-color * 1.1;
+  }
+}
+
+/* 淡蓝色辅色调超链接 */
+.app-info-link {
+  color: $app-info-color;
+  // transition: all 0.1s;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    color: $app-text-color-disable;
+  }
+
+  &:not(.disabled):active {
+    color: $app-info-color * 1.1;
+  }
+}
+
+/* 红色主色调超链接 */
+.app-error-link {
+  color: $app-error-color;
+  // transition: all 0.1s;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    color: $app-text-color-disable;
+  }
+
+  &:not(.disabled):active {
+    color: $app-error-color * 1.1;
+  }
+}
+
+/* 绿色主色调超链接 */
+.app-success-link {
+  color: $app-success-color;
+  // transition: all 0.1s;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    color: $app-text-color-disable;
+  }
+
+  &:not(.disabled):active {
+    color: $app-success-color * 1.1;
+  }
+}
+
+/* 默认色调超链接 */
+.app-default-link {
+  color: $app-text-color-grey;
+  // transition: all 0.1s;
+
+  &.underline {
+    text-decoration: underline;
+  }
+
+  &.disabled {
+    color: $app-text-color-disable;
+  }
+
+  &:not(.disabled):active {
+    color: $app-text-color-grey * 1.1;
+  }
+}
