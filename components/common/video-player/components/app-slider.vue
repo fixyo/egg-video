@@ -58,7 +58,7 @@
 		},
 		methods: {
 			touchstart(e) {
-				console.log('touchstart', e)
+				// ssh
 				
 				if (this.duration === 0) return 
 				this.touchStart = true 
