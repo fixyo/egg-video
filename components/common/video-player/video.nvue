@@ -5,6 +5,8 @@
 			:controls="false"
 			ref="video"
 			@timeupdate="timeupdate"
+			@play="isplaying = true"
+			@pause="isplaying = false"
 			style="width: 750rpx; height: 225px;"
 		></video>
 		<!-- 顶部操作栏 -->
@@ -17,7 +19,10 @@
 		
 		<view class="video-bottom-bar border-green">
 			<view class="bottom-operate-area flex align-stretch">
-				<view class="left"><app-icon :size="22" :icon="'\ue63a'" ></app-icon></view>
+				<view class="left">
+					<app-icon :size="22" :icon="'\ue63a'" v-if="!isplaying" @click="playOrPause"></app-icon>
+					<app-icon :size="22" :icon="'\ue605'" v-else @click="playOrPause"></app-icon>
+				</view>
 				<view class="center flex-1">
 					<app-slider 
 						:duration="duration" 
@@ -55,7 +60,8 @@
 				currentTime: 0,
 				duration: 3700,
 				windowWidth: 0,
-				windowHeight: 0
+				windowHeight: 0,
+				isplaying: false 
 			}
 		},
 		created() {
@@ -94,8 +100,16 @@
 				this.duration = parseInt(e.detail.duration)
 			},
 			progressChange(e) {
+				console.log(e, 'seek')
 				videoCTX.seek(e)
 				videoCTX.play()
+			},
+			playOrPause() {
+				if (!this.isplaying) {
+					videoCTX.play()
+				} else {
+					videoCTX.pause()
+				}
 			}
 		}
 	}

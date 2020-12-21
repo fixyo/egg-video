@@ -59,9 +59,9 @@
 		methods: {
 			touchstart(e) {
 				// ssh
-				
 				if (this.duration === 0) return 
 				this.touchStart = true 
+	
 				this.currentWidth = e.touches[0].screenX - this.left 
 			},
 			touchmove(e) {
@@ -80,7 +80,8 @@
 			touchend(e) {
 				if(this.duration === 0) return
 				this.touchStart = false
-				this.$emit('change',this.curTime)
+				console.log(this.curTime, 'curTime')
+				this.$emit('change', this.curTime)
 			},
 			touchcancel(e) {
 				
