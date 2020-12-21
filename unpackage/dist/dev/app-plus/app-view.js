@@ -235,7 +235,20 @@ var render = function() {
   return _c(
     "v-uni-view",
     { attrs: { _i: 0 } },
-    [_c("v-uni-text", { attrs: { _i: 1 } }, [_vm._v("hahah")])],
+    [
+      _c(
+        "v-uni-button",
+        {
+          attrs: { type: "default", _i: 1 },
+          on: {
+            click: function($event) {
+              return _vm.$handleViewEvent($event)
+            }
+          }
+        },
+        [_vm._v("详情")]
+      )
+    ],
     1
   )
 }

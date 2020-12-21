@@ -30,13 +30,15 @@
 			return {
 				width: 0,
 				currentWidth: 0,
-				left: 44,
+				left: 0,
 				touchStart: false 
 			}
 		},
 		created() {
 			this.width = this.videoComInstance.windowWidth - 88 - 90 - 15
-			console.log(this.width)
+			this.left = 44 
+			this.getCurrentWidth()
+			// console.log(this.width)
 		},
 		computed: {
 			progressBarStyle() {
@@ -52,11 +54,15 @@
 		watch: {
 			currentTime(newVal) {
 				if (this.touchStart) return 
-				const rate = this.dration === 0 ? 0 : newVal / this.duration 
-				this.currentWidth = rate * this.width 
+				// const rate = this.dration === 0 ? 0 : newVal / this.duration 
+				// this.currentWidth = rate * this.width 
+				this.getCurrentWidth()
 			}
 		},
 		methods: {
+			getCurrentWidth() {
+				this.currentWidth = this.duration == 0 ? 0 : (this.currentTime/this.duration) * this.width
+			},
 			touchstart(e) {
 				// ssh
 				if (this.duration === 0) return 
@@ -75,7 +81,7 @@
 					this.currentWidth = width 
 				}
 				
-				// this.$emit('change', this.curTime)
+				this.$emit('update', this.curTime)
 			},
 			touchend(e) {
 				if(this.duration === 0) return
