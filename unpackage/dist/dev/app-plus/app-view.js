@@ -137,6 +137,7 @@ window.__uniConfig = { "window": { "navigationBarTextStyle": "black", "navigatio
 if (uni.restoreGlobal) {
   uni.restoreGlobal(weex, plus, setTimeout, clearTimeout, setInterval, clearInterval);
 }
+
 __definePage('pages/video-demo/index', function () {return Vue.extend(__webpack_require__(/*! pages/video-demo/index.vue?mpType=page */ 2).default);});
 __definePage('pages/detail-video/detail-video', function () {return Vue.extend(__webpack_require__(/*! pages/detail-video/detail-video.vue?mpType=page */ 8).default);});
 __definePage('pages/index/index', function () {return Vue.extend(__webpack_require__(/*! pages/index/index.vue?mpType=page */ 23).default);});

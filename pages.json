@@ -1,6 +1,15 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path" : "pages/news/news",
+			"style" : {
+				"app-plus":{
+					"navigationBarTitleText":"新闻",
+					"titleNView": {}
+				}
+			}
+		},
+		{
 			"path" : "pages/video-demo/index",
 			"style" : {
 				"app-plus":{
@@ -235,23 +244,31 @@
 		"borderStyle":"black",
 		"selectedColor":"#FB7299",
 		"color":"#444444",
-		"list":[{
+		"list":[
+			{
+			"pagePath":"pages/news/news",
+			"iconPath":"static/tabbar/find.png",
+			"selectedIconPath":"static/tabbar/find-selected.png",
+				"text":"热点"
+			},
+			{
 			"pagePath":"pages/index/index",
 			"iconPath":"static/tabbar/find.png",
 			"selectedIconPath":"static/tabbar/find-selected.png",
-			"text":"发现"
-		},
-		{
-			"pagePath":"pages/cate/cate",
-			"iconPath":"static/tabbar/cate.png",
-			"selectedIconPath":"static/tabbar/cate-selected.png",
-			"text":"分类"
-		},
-		{
-			"pagePath":"pages/my/my",
-			"iconPath":"static/tabbar/my.png",
-			"selectedIconPath":"static/tabbar/my-selected.png",
-			"text":"我的"
-		}]
+				"text":"发现"
+			},
+			{
+				"pagePath":"pages/cate/cate",
+				"iconPath":"static/tabbar/cate.png",
+				"selectedIconPath":"static/tabbar/cate-selected.png",
+				"text":"分类"
+			},
+			{
+				"pagePath":"pages/my/my",
+				"iconPath":"static/tabbar/my.png",
+				"selectedIconPath":"static/tabbar/my-selected.png",
+				"text":"我的"
+			}
+		]
 	}
 }
