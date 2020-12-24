@@ -39,6 +39,9 @@
 				}
 			}
 		},
+		created() {
+			console.log('newsItem created')
+		},
 		methods: {
 			click() {
 				this.$emit('click');

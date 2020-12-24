@@ -20,11 +20,11 @@
 						:ref="'tabitem' + index"
 						:data-id="index"
 						:data-current="index" 
-						@click="ontabtap"
+						@click="ontabtap(index)"
 					>
 						<text 
 							class="uni-tab-item-title" 
-							:class="tabIndex==index ? 'uni-tab-item-title-active' : ''">{{tab.name}}</text>
+							:class="tabIndex === index ? 'uni-tab-item-title-active' : ''">{{tab.name}}</text>
 					</view>
 				</view>
 				<view class="scroll-view-indicator">
@@ -43,14 +43,25 @@
 
 <script>
 	export default {
+		props: {
+			tabIndex: {
+				type: Number,
+				default: 0
+			},
+			tabList: {
+				type: Array,
+				default() {
+					return []
+				}
+			}
+		},
 		data() {
 			return {
-				tabList: [],
+				
 				scrollInto: "",
 				indicatorLineLeft: 0,
 				indicatorLineWidth: 0,
-				tabIndex: 1,
-				isTap: false 
+				isTap: true
 			}
 		},
 		mounted() {
@@ -58,13 +69,13 @@
 		},
 		created() {
 			console.log('created')
-			for (var i = 0; i < 4; i++) {
-				this.tabList.push({
-					id: "tab" + i,
-					name: 'Tab ' + (i + 1),
-					pageid: i + 1
-				})
-			}
+			// for (var i = 0; i < 4; i++) {
+			// 	this.tabList.push({
+			// 		id: "tab" + i,
+			// 		name: 'Tab ' + (i + 1),
+			// 		pageid: i + 1
+			// 	})
+			// }
 		},
 		computed: {
 			getTabWidth() {
@@ -79,7 +90,9 @@
 			}
 		},
 		methods: {
-			ontabtap() {}
+			ontabtap(index) {
+				this.$emit('update:tabIndex', index)
+			}
 		}
 	}
 </script>
@@ -145,7 +158,7 @@
 	}
 	
 	.scroll-view-animation {
-		transition-duration: 0.2s;
+		transition-duration: .2s;
 		transition-property: left;
 	}
 	
